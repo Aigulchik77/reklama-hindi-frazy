@@ -39,8 +39,26 @@ body::before{
 }
 .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
 
+/* language switcher */
+.lang-sw{
+  position:fixed;top:16px;right:16px;z-index:50;
+  display:flex;gap:4px;background:rgba(255,253,247,.92);
+  border:1px solid var(--line);border-radius:999px;padding:4px;
+  box-shadow:0 10px 26px rgba(90,60,20,.18);backdrop-filter:blur(8px);
+}
+.lang-sw button{
+  border:none;background:transparent;cursor:pointer;
+  font-family:'Manrope',sans-serif;font-weight:800;font-size:12.5px;
+  color:var(--ink-2);padding:7px 14px;border-radius:999px;transition:all .2s ease;
+}
+.lang-sw button:hover{color:var(--ink)}
+.lang-sw button.on{
+  background:linear-gradient(135deg,var(--saffron),var(--saffron-2));
+  color:#fff;box-shadow:0 6px 16px rgba(224,138,26,.4);
+}
+
 /* HERO */
-header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0}
+header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 70px}
 .badge{
   display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
   background:linear-gradient(135deg,var(--saffron),var(--saffron-2));color:#fff;
@@ -188,20 +206,26 @@ footer b{color:var(--saffron-2)}
 </head>
 <body>
 
+<div class="lang-sw" role="group" aria-label="Выбор языка / Language">
+  <button data-lang="ru" class="on">РУ</button>
+  <button data-lang="en">EN</button>
+  <button data-lang="hi">हिं</button>
+</div>
+
 <header>
   <div class="wrap">
-    <span class="badge"><span class="dot"></span> Игра · хинди фразы</span>
-    <h1>Заговорите<br>с первой <span class="green">фразы</span><br>на нескольких <span class="saff">языках</span></h1>
-    <p class="lead">В игре <b>более 50 живых фраз</b> — и каждую можно выучить <b>на нескольких языках сразу</b>: слово, транскрипция, перевод и озвучка. Без учебников и зубрёжки — просто начинаете говорить.</p>
+    <span class="badge"><span class="dot"></span> <span data-i18n="badge">Игра · хинди фразы</span></span>
+    <h1 data-i18n="h1">Заговорите<br>с первой <span class="green">фразы</span><br>на нескольких <span class="saff">языках</span></h1>
+    <p class="lead" data-i18n="lead">В игре <b>более 50 живых фраз</b> — и каждую можно выучить <b>на нескольких языках сразу</b>: слово, транскрипция, перевод и озвучка. Без учебников и зубрёжки — просто начинаете говорить.</p>
     <div class="cta-row">
-      <a class="btn" href="#example">Посмотреть пример 👇</a>
-      <a class="btn-ghost" href="https://wa.me/77057255717?text=Здравствуйте!%20Хочу%20играть%20в%20хинди-фразы">Начать игру в WhatsApp</a>
+      <a class="btn" href="#example" data-i18n="btnExample">Посмотреть пример 👇</a>
+      <a class="btn-ghost" href="https://wa.me/77057255717?text=Здравствуйте!%20Хочу%20играть%20в%20хинди-фразы" data-i18n="btnWhatsapp">Начать игру в WhatsApp</a>
     </div>
     <div class="hero-cards">
-      <div class="hc"><b>50+</b><span>живых фраз в игре</span></div>
-      <div class="hc"><b>несколько</b><span>языков сразу</span></div>
-      <div class="hc"><b>3×</b><span>слово + транскрипция + перевод</span></div>
-      <div class="hc"><b>▶</b><span>озвучка каждой фразы</span></div>
+      <div class="hc"><b>50+</b><span data-i18n="hc1">живых фраз в игре</span></div>
+      <div class="hc"><b data-i18n="hc2b">несколько</b><span data-i18n="hc2">языков сразу</span></div>
+      <div class="hc"><b>3×</b><span data-i18n="hc3">слово + транскрипция + перевод</span></div>
+      <div class="hc"><b>▶</b><span data-i18n="hc4">озвучка каждой фразы</span></div>
     </div>
   </div>
 </header>
@@ -209,73 +233,73 @@ footer b{color:var(--saffron-2)}
 <section id="example">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Как звучит одна фраза</h2>
-      <p>Одна и та же фраза — «Как у вас дела?» — на четырёх языках. Каждое слово разобрано: само слово, перевод и транскрипция. Нажмите ▶ и слушайте.</p>
+      <h2 data-i18n="sec1h">Как звучит одна фраза</h2>
+      <p data-i18n="sec1p">Одна и та же фраза — «Как у вас дела?» — на четырёх языках. Каждое слово разобрано: само слово, перевод и транскрипция. Нажмите ▶ и слушайте.</p>
     </div>
 
     <div class="phrase-grid">
       <div class="phrase rv" data-flag="🇮🇳">
         <div class="phrase-head">
-          <span class="t">Хинди</span>
+          <span class="t" data-i18n="langHi">Хинди</span>
           <span class="st">हिन्दी</span>
         </div>
         <div class="hi">आप कैसे हैं?</div>
-        <div class="tr">Как у вас дела?</div>
-        <button class="spk" data-lang="hi" data-text="आप कैसे हैं?" title="Прослушать фразу">▶ Прослушать фразу</button>
+        <div class="tr" data-i18n="trHow">Как у вас дела?</div>
+        <button class="spk" data-lang="hi" data-text="आप कैसे हैं?" title="Прослушать фразу" data-i18n="spk">▶ Прослушать фразу</button>
         <div class="words">
-          <div class="w"><span class="n">1</span><span class="wt">आप</span><span class="wd">вы</span><span class="wtr">аап</span></div>
-          <div class="w"><span class="n">2</span><span class="wt">कैसे</span><span class="wd">как</span><span class="wtr">кайсэ</span></div>
-          <div class="w"><span class="n">3</span><span class="wt">हैं</span><span class="wd">есть / находитесь</span><span class="wtr">хэйн</span></div>
+          <div class="w"><span class="n">1</span><span class="wt">आप</span><span class="wd" data-i18n="whi1">вы</span><span class="wtr">аап</span></div>
+          <div class="w"><span class="n">2</span><span class="wt">कैसे</span><span class="wd" data-i18n="whi2">как</span><span class="wtr">кайсэ</span></div>
+          <div class="w"><span class="n">3</span><span class="wt">हैं</span><span class="wd" data-i18n="whi3">есть / находитесь</span><span class="wtr">хэйн</span></div>
         </div>
       </div>
 
       <div class="phrase rv" data-flag="🇬🇧">
         <div class="phrase-head">
-          <span class="t">Английский</span>
+          <span class="t" data-i18n="langEn">Английский</span>
           <span class="st">English</span>
         </div>
         <div class="hi-lat">How are you?</div>
-        <div class="tr">Как у вас дела?</div>
-        <button class="spk" data-lang="en" data-text="How are you?" title="Прослушать фразу">▶ Прослушать фразу</button>
+        <div class="tr" data-i18n="trHow">Как у вас дела?</div>
+        <button class="spk" data-lang="en" data-text="How are you?" title="Прослушать фразу" data-i18n="spk">▶ Прослушать фразу</button>
         <div class="words">
-          <div class="w"><span class="n">1</span><span class="wt">How</span><span class="wd">как</span><span class="wtr">хау</span></div>
-          <div class="w"><span class="n">2</span><span class="wt">are</span><span class="wd">есть / (вы)</span><span class="wtr">ар</span></div>
-          <div class="w"><span class="n">3</span><span class="wt">you</span><span class="wd">вы</span><span class="wtr">ю</span></div>
+          <div class="w"><span class="n">1</span><span class="wt">How</span><span class="wd" data-i18n="wen1">как</span><span class="wtr">хау</span></div>
+          <div class="w"><span class="n">2</span><span class="wt">are</span><span class="wd" data-i18n="wen2">есть / (вы)</span><span class="wtr">ар</span></div>
+          <div class="w"><span class="n">3</span><span class="wt">you</span><span class="wd" data-i18n="wen3">вы</span><span class="wtr">ю</span></div>
         </div>
       </div>
 
       <div class="phrase rv" data-flag="🇹🇷">
         <div class="phrase-head">
-          <span class="t">Турецкий</span>
+          <span class="t" data-i18n="langTr">Турецкий</span>
           <span class="st">Türkçe</span>
         </div>
         <div class="hi-lat">Nasılsın?</div>
-        <div class="tr">Как у вас дела?</div>
-        <button class="spk" data-lang="tr" data-text="Nasılsın?" title="Прослушать фразу">▶ Прослушать фразу</button>
+        <div class="tr" data-i18n="trHow">Как у вас дела?</div>
+        <button class="spk" data-lang="tr" data-text="Nasılsın?" title="Прослушать фразу" data-i18n="spk">▶ Прослушать фразу</button>
         <div class="words">
-          <div class="w"><span class="n">1</span><span class="wt">Nasıl</span><span class="wd">как</span><span class="wtr">насыл</span></div>
-          <div class="w"><span class="n">2</span><span class="wt">-sın</span><span class="wd">ты (окончание)</span><span class="wtr">сын</span></div>
+          <div class="w"><span class="n">1</span><span class="wt">Nasıl</span><span class="wd" data-i18n="wtr1">как</span><span class="wtr">насыл</span></div>
+          <div class="w"><span class="n">2</span><span class="wt">-sın</span><span class="wd" data-i18n="wtr2">ты (окончание)</span><span class="wtr">сын</span></div>
         </div>
       </div>
 
       <div class="phrase rv" data-flag="🇮🇹">
         <div class="phrase-head">
-          <span class="t">Итальянский</span>
+          <span class="t" data-i18n="langIt">Итальянский</span>
           <span class="st">Italiano</span>
         </div>
         <div class="hi-lat">Come stai?</div>
-        <div class="tr">Как у вас дела?</div>
-        <button class="spk" data-lang="it" data-text="Come stai?" title="Прослушать фразу">▶ Прослушать фразу</button>
+        <div class="tr" data-i18n="trHow">Как у вас дела?</div>
+        <button class="spk" data-lang="it" data-text="Come stai?" title="Прослушать фразу" data-i18n="spk">▶ Прослушать фразу</button>
         <div class="words">
-          <div class="w"><span class="n">1</span><span class="wt">Come</span><span class="wd">как</span><span class="wtr">комэ</span></div>
-          <div class="w"><span class="n">2</span><span class="wt">stai</span><span class="wd">ты живёшь / поживаешь</span><span class="wtr">стай</span></div>
+          <div class="w"><span class="n">1</span><span class="wt">Come</span><span class="wd" data-i18n="wit1">как</span><span class="wtr">комэ</span></div>
+          <div class="w"><span class="n">2</span><span class="wt">stai</span><span class="wd" data-i18n="wit2">ты живёшь / поживаешь</span><span class="wtr">стай</span></div>
         </div>
       </div>
     </div>
 
     <div class="note rv">
       <span class="note-ico">🎧</span>
-      <p>Сначала слушаете фразу целиком, потом разбираете по словам. Одна такая фраза в день — и через неделю вы уже здороваетесь, спрашиваете дорогу и заказываете чай.</p>
+      <p data-i18n="note1">Сначала слушаете фразу целиком, потом разбираете по словам. Одна такая фраза в день — и через неделю вы уже здороваетесь, спрашиваете дорогу и заказываете чай.</p>
     </div>
   </div>
 </section>
@@ -283,13 +307,13 @@ footer b{color:var(--saffron-2)}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Как устроена игра</h2>
+      <h2 data-i18n="sec2h">Как устроена игра</h2>
     </div>
     <div class="steps">
-      <div class="step rv"><h4>Получаете фразу</h4><p>Более 50 живых фраз из реальной жизни — каждая приходит в чате или на странице.</p></div>
-      <div class="step rv"><h4>Разбираете по словам</h4><p>Слово, транскрипция, перевод. Всё понятно сразу — на выбранном вами языке.</p></div>
-      <div class="step rv"><h4>Слушаете и повторяете</h4><p>Нажимаете ▶ и говорите вслух. Озвучка ставит произношение.</p></div>
-      <div class="step rv"><h4>Учите несколько языков разом</h4><p>Та же фраза проходится на хинди, английском, турецком, итальянском — параллельно.</p></div>
+      <div class="step rv"><h4 data-i18n="st1h">Получаете фразу</h4><p data-i18n="st1p">Более 50 живых фраз из реальной жизни — каждая приходит в чате или на странице.</p></div>
+      <div class="step rv"><h4 data-i18n="st2h">Разбираете по словам</h4><p data-i18n="st2p">Слово, транскрипция, перевод. Всё понятно сразу — на выбранном вами языке.</p></div>
+      <div class="step rv"><h4 data-i18n="st3h">Слушаете и повторяете</h4><p data-i18n="st3p">Нажимаете ▶ и говорите вслух. Озвучка ставит произношение.</p></div>
+      <div class="step rv"><h4 data-i18n="st4h">Учите несколько языков разом</h4><p data-i18n="st4p">Та же фраза проходится на хинди, английском, турецком, итальянском — параллельно.</p></div>
     </div>
   </div>
 </section>
@@ -297,17 +321,17 @@ footer b{color:var(--saffron-2)}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Почему это работает</h2>
+      <h2 data-i18n="sec3h">Почему это работает</h2>
     </div>
     <div class="feat">
-      <div class="feat-card rv"><span class="ico">🗣️</span><h3>Живой язык</h3><p>Фразы, которые реально говорят в Индии: приветствия, магазины, дорога, еда.</p></div>
-      <div class="feat-card rv"><span class="ico">🧠</span><h3>50+ фраз по шагам</h3><p>Больше пятидесяти живых фраз. Каждая усваивается легко и добавляется к предыдущим.</p></div>
-      <div class="feat-card rv"><span class="ico">🌍</span><h3>Несколько языков сразу</h3><p>Каждую фразу можно выучить на английском, турецком, итальянском и других языках параллельно.</p></div>
-      <div class="feat-card rv"><span class="ico">👨‍👩‍👧</span><h3>Для всех</h3><p>Детям — как игра. Взрослым — быстрый старт перед поездкой в Индию.</p></div>
+      <div class="feat-card rv"><span class="ico">🗣️</span><h3 data-i18n="ft1h">Живой язык</h3><p data-i18n="ft1p">Фразы, которые реально говорят в Индии: приветствия, магазины, дорога, еда.</p></div>
+      <div class="feat-card rv"><span class="ico">🧠</span><h3 data-i18n="ft2h">50+ фраз по шагам</h3><p data-i18n="ft2p">Больше пятидесяти живых фраз. Каждая усваивается легко и добавляется к предыдущим.</p></div>
+      <div class="feat-card rv"><span class="ico">🌍</span><h3 data-i18n="ft3h">Несколько языков сразу</h3><p data-i18n="ft3p">Каждую фразу можно выучить на английском, турецком, итальянском и других языках параллельно.</p></div>
+      <div class="feat-card rv"><span class="ico">👨‍👩‍👧</span><h3 data-i18n="ft4h">Для всех</h3><p data-i18n="ft4p">Детям — как игра. Взрослым — быстрый старт перед поездкой в Индию.</p></div>
     </div>
     <div class="note rv" style="margin-top:20px">
       <span class="note-ico">🌍</span>
-      <p>Так же можем сделать фразы на <b>любом языке</b>: английский, итальянский, турецкий, арабский, китайский и другие.</p>
+      <p data-i18n="note2">Так же можем сделать фразы на <b>любом языке</b>: английский, итальянский, турецкий, арабский, китайский и другие.</p>
     </div>
   </div>
 </section>
@@ -315,21 +339,165 @@ footer b{color:var(--saffron-2)}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="cta rv">
-      <h2>Готовы заговорить?</h2>
-      <p>В игре ждут более 50 фраз на нескольких языках сразу. Напишите мне — пришлю первую фразу и мы начнём. Ваш темп, ваш язык, ваш прогресс.</p>
-      <a class="btn" href="https://wa.me/77057255717?text=Здравствуйте!%20Хочу%20играть%20в%20хинди-фразы">Написать в WhatsApp</a>
-      <div class="phone">или позвоните: <a href="tel:+77057255717">+7 705 725 57 17</a></div>
+      <h2 data-i18n="ctaH">Готовы заговорить?</h2>
+      <p data-i18n="ctaP">В игре ждут более 50 фраз на нескольких языках сразу. Напишите мне — пришлю первую фразу и мы начнём. Ваш темп, ваш язык, ваш прогресс.</p>
+      <a class="btn" href="https://wa.me/77057255717?text=Здравствуйте!%20Хочу%20играть%20в%20хинди-фразы" data-i18n="ctaBtn">Написать в WhatsApp</a>
+      <div class="phone"><span data-i18n="ctaCall">или позвоните:</span> <a href="tel:+77057255717">+7 705 725 57 17</a></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap" data-i18n="footer">
     Игра «Хинди фразы» · <b>50+ фраз · несколько языков сразу</b>
   </div>
 </footer>
 
 <script>
+const I18N = {
+  ru: {
+    badge:"Игра · хинди фразы",
+    h1:"Заговорите<br>с первой <span class=\"green\">фразы</span><br>на нескольких <span class=\"saff\">языках</span>",
+    lead:"В игре <b>более 50 живых фраз</b> — и каждую можно выучить <b>на нескольких языках сразу</b>: слово, транскрипция, перевод и озвучка. Без учебников и зубрёжки — просто начинаете говорить.",
+    btnExample:"Посмотреть пример 👇",
+    btnWhatsapp:"Начать игру в WhatsApp",
+    hc1:"живых фраз в игре",
+    hc2b:"несколько",
+    hc2:"языков сразу",
+    hc3:"слово + транскрипция + перевод",
+    hc4:"озвучка каждой фразы",
+    sec1h:"Как звучит одна фраза",
+    sec1p:"Одна и та же фраза — «Как у вас дела?» — на четырёх языках. Каждое слово разобрано: само слово, перевод и транскрипция. Нажмите ▶ и слушайте.",
+    langHi:"Хинди",
+    langEn:"Английский",
+    langTr:"Турецкий",
+    langIt:"Итальянский",
+    trHow:"Как у вас дела?",
+    spk:"▶ Прослушать фразу",
+    whi1:"вы", whi2:"как", whi3:"есть / находитесь",
+    wen1:"как", wen2:"есть / (вы)", wen3:"вы",
+    wtr1:"как", wtr2:"ты (окончание)",
+    wit1:"как", wit2:"ты живёшь / поживаешь",
+    note1:"Сначала слушаете фразу целиком, потом разбираете по словам. Одна такая фраза в день — и через неделю вы уже здороваетесь, спрашиваете дорогу и заказываете чай.",
+    sec2h:"Как устроена игра",
+    st1h:"Получаете фразу", st1p:"Более 50 живых фраз из реальной жизни — каждая приходит в чате или на странице.",
+    st2h:"Разбираете по словам", st2p:"Слово, транскрипция, перевод. Всё понятно сразу — на выбранном вами языке.",
+    st3h:"Слушаете и повторяете", st3p:"Нажимаете ▶ и говорите вслух. Озвучка ставит произношение.",
+    st4h:"Учите несколько языков разом", st4p:"Та же фраза проходится на хинди, английском, турецком, итальянском — параллельно.",
+    sec3h:"Почему это работает",
+    ft1h:"Живой язык", ft1p:"Фразы, которые реально говорят в Индии: приветствия, магазины, дорога, еда.",
+    ft2h:"50+ фраз по шагам", ft2p:"Больше пятидесяти живых фраз. Каждая усваивается легко и добавляется к предыдущим.",
+    ft3h:"Несколько языков сразу", ft3p:"Каждую фразу можно выучить на английском, турецком, итальянском и других языках параллельно.",
+    ft4h:"Для всех", ft4p:"Детям — как игра. Взрослым — быстрый старт перед поездкой в Индию.",
+    note2:"Так же можем сделать фразы на <b>любом языке</b>: английский, итальянский, турецкий, арабский, китайский и другие.",
+    ctaH:"Готовы заговорить?",
+    ctaP:"В игре ждут более 50 фраз на нескольких языках сразу. Напишите мне — пришлю первую фразу и мы начнём. Ваш темп, ваш язык, ваш прогресс.",
+    ctaBtn:"Написать в WhatsApp",
+    ctaCall:"или позвоните:",
+    footer:"Игра «Хинди фразы» · <b>50+ фраз · несколько языков сразу</b>",
+    title:"Хинди фразы — игра, которая учит говорить на нескольких языках сразу"
+  },
+  en: {
+    badge:"Game · Hindi phrases",
+    h1:"Start speaking<br>with your first <span class=\"green\">phrase</span><br>in several <span class=\"saff\">languages</span>",
+    lead:"The game has <b>50+ real phrases</b> — and you can learn each one <b>in several languages at once</b>: word, transcription, translation and audio. No textbooks, no cramming — you just start speaking.",
+    btnExample:"See an example 👇",
+    btnWhatsapp:"Start the game on WhatsApp",
+    hc1:"live phrases in the game",
+    hc2b:"several",
+    hc2:"languages at once",
+    hc3:"word + transcription + translation",
+    hc4:"audio for every phrase",
+    sec1h:"How one phrase sounds",
+    sec1p:"The same phrase — “How are you?” — in four languages. Each word is broken down: the word, the translation and the transcription. Press ▶ and listen.",
+    langHi:"Hindi",
+    langEn:"English",
+    langTr:"Turkish",
+    langIt:"Italian",
+    trHow:"How are you?",
+    spk:"▶ Listen to the phrase",
+    whi1:"you", whi2:"how", whi3:"are / (formal)",
+    wen1:"how", wen2:"are / (you)", wen3:"you",
+    wtr1:"how", wtr2:"you (ending)",
+    wit1:"how", wit2:"you're doing / how are you",
+    note1:"First you listen to the whole phrase, then break it into words. One phrase a day — and within a week you are already greeting people, asking for directions and ordering tea.",
+    sec2h:"How the game works",
+    st1h:"Get a phrase", st1p:"More than 50 real-life phrases — each one arrives in the chat or on the page.",
+    st2h:"Break it into words", st2p:"Word, transcription, translation. Everything is clear right away — in the language you choose.",
+    st3h:"Listen and repeat", st3p:"Press ▶ and speak out loud. The audio sets your pronunciation.",
+    st4h:"Learn several languages at once", st4p:"The same phrase in Hindi, English, Turkish and Italian — in parallel.",
+    sec3h:"Why it works",
+    ft1h:"Real language", ft1p:"Phrases people actually say in India: greetings, shops, roads, food.",
+    ft2h:"50+ phrases step by step", ft2p:"More than fifty real phrases. Each one is easy to learn and builds on the previous ones.",
+    ft3h:"Several languages at once", ft3p:"You can learn each phrase in English, Turkish, Italian and other languages in parallel.",
+    ft4h:"For everyone", ft4p:"For children — like a game. For adults — a quick start before a trip to India.",
+    note2:"We can also make phrases in <b>any language</b>: English, Italian, Turkish, Arabic, Chinese and more.",
+    ctaH:"Ready to start speaking?",
+    ctaP:"The game has more than 50 phrases in several languages at once. Write to me — I'll send the first phrase and we'll start. Your pace, your language, your progress.",
+    ctaBtn:"Write on WhatsApp",
+    ctaCall:"or call:",
+    footer:"Game “Hindi phrases” · <b>50+ phrases · several languages at once</b>",
+    title:"Hindi phrases — a game that teaches you to speak several languages at once"
+  },
+  hi: {
+    badge:"खेल · हिंदी वाक्यांश",
+    h1:"पहले <span class=\"green\">वाक्यांश</span> से<br>कई <span class=\"saff\">भाषाओं</span> में<br>बोलना शुरू करें",
+    lead:"खेल में <b>50 से अधिक असली वाक्यांश</b> हैं — और हर एक को आप <b>एक साथ कई भाषाओं में</b> सीख सकते हैं: शब्द, लिप्यंतरण, अनुवाद और ऑडियो। बिना किताबों और रट्टे के — बस बोलना शुरू करें।",
+    btnExample:"उदाहरण देखें 👇",
+    btnWhatsapp:"व्हाट्सएप पर खेल शुरू करें",
+    hc1:"खेल में असली वाक्यांश",
+    hc2b:"कई",
+    hc2:"भाषाएँ एक साथ",
+    hc3:"शब्द + लिप्यंतरण + अनुवाद",
+    hc4:"हर वाक्यांश की ऑडियो",
+    sec1h:"एक वाक्यांश कैसा लगता है",
+    sec1p:"वही वाक्यांश — «आप कैसे हैं?» — चार भाषाओं में। हर शब्द अलग किया गया है: शब्द, अनुवाद और लिप्यंतरण। ▶ दबाएँ और सुनें।",
+    langHi:"हिंदी",
+    langEn:"अंग्रेज़ी",
+    langTr:"तुर्की",
+    langIt:"इतालवी",
+    trHow:"आप कैसे हैं?",
+    spk:"▶ वाक्यांश सुनें",
+    whi1:"आप", whi2:"कैसे", whi3:"हैं / (आप)",
+    wen1:"कैसे", wen2:"हैं / (आप)", wen3:"आप",
+    wtr1:"कैसे", wtr2:"तुम (प्रत्यय)",
+    wit1:"कैसे", wit2:"तुम कैसे हो",
+    note1:"पहले आप पूरा वाक्यांश सुनते हैं, फिर उसे शब्दों में बाँटते हैं। दिन में एक वाक्यांश — और एक हफ्ते में आप पहले से नमस्ते करते हैं, रास्ता पूछते हैं और चाय मँगाते हैं।",
+    sec2h:"खेल कैसे काम करता है",
+    st1h:"वाक्यांश पाएँ", st1p:"असली जीवन के 50 से अधिक वाक्यांश — हर एक चैट में या पेज पर आता है।",
+    st2h:"शब्दों में बाँटें", st2p:"शब्द, लिप्यंतरण, अनुवाद। सब कुछ तुरंत समझ में आता है — आपकी चुनी हुई भाषा में।",
+    st3h:"सुनें और दोहराएँ", st3p:"▶ दबाएँ और ज़ोर से बोलें। ऑडियो उच्चारण सुधारता है।",
+    st4h:"एक साथ कई भाषाएँ सीखें", st4p:"वही वाक्यांश हिंदी, अंग्रेज़ी, तुर्की, इतालवी में — समानांतर।",
+    sec3h:"यह क्यों काम करता है",
+    ft1h:"असली भाषा", ft1p:"भारत में लोग वास्तव में यही बोलते हैं: नमस्ते, दुकानें, रास्ता, खाना।",
+    ft2h:"50+ वाक्यांश कदम दर कदम", ft2p:"पचास से अधिक असली वाक्यांश। हर एक आसानी से सीखा जाता है और पिछले में जुड़ता है।",
+    ft3h:"एक साथ कई भाषाएँ", ft3p:"हर वाक्यांश अंग्रेज़ी, तुर्की, इतालवी और दूसरी भाषाओं में समानांतर सीख सकते हैं।",
+    ft4h:"सबके लिए", ft4p:"बच्चों के लिए — खेल की तरह। बड़ों के लिए — भारत की यात्रा से पहले तेज़ शुरुआत।",
+    note2:"हम <b>किसी भी भाषा</b> में वाक्यांश बना सकते हैं: अंग्रेज़ी, इतालवी, तुर्की, अरबी, चीनी और अन्य।",
+    ctaH:"बोलने के लिए तैयार?",
+    ctaP:"खेल में एक साथ कई भाषाओं में 50 से अधिक वाक्यांश हैं। मुझे लिखें — मैं पहला वाक्यांश भेजूँगा और हम शुरू करेंगे। आपकी गति, आपकी भाषा, आपकी प्रगति।",
+    ctaBtn:"व्हाट्सएप पर लिखें",
+    ctaCall:"या कॉल करें:",
+    footer:"खेल «हिंदी वाक्यांश» · <b>50+ वाक्यांश · एक साथ कई भाषाएँ</b>",
+    title:"हिंदी वाक्यांश — एक खेल जो एक साथ कई भाषाओं में बोलना सिखाता है"
+  }
+};
+
+let curLang = localStorage.getItem('hf-lang') || 'ru';
+document.querySelectorAll('.lang-sw button').forEach(b => {
+  b.addEventListener('click', () => { curLang = b.dataset.lang; localStorage.setItem('hf-lang', curLang); apply(); });
+});
+function apply(){
+  document.documentElement.lang = curLang;
+  document.title = I18N[curLang].title;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (I18N[curLang][k] !== undefined) el.innerHTML = I18N[curLang][k];
+  });
+  document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === curLang));
+}
+apply();
+
 const io = new IntersectionObserver((es) => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: .15 });
